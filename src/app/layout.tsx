@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { AppProvider } from "@/context/AppContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -9,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Western Computer Multi Trade Link",
-  description: "Professional maintenance services for printers, computers, and laptops with parts sales and technical support.",
+  description: "Your trusted partner in computer maintenance and parts",
 };
 
 export default function RootLayout({
@@ -20,13 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
+        <AppProvider>
           <Navbar />
           <main className="flex-grow">
             {children}
           </main>
           <Footer />
-        </div>
+        </AppProvider>
         <Toaster position="top-center" />
       </body>
     </html>
